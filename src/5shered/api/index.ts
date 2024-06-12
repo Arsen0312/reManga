@@ -4,4 +4,4 @@
 
 // export const API_URL = "http://172.20.10.2:5006"; // phone
 
-export const API_URL = "http://localhost:5007";  // home
+export const API_URL = "http://10.10.10.186:5007";  // home
