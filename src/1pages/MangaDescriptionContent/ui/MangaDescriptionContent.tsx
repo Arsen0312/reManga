@@ -3,10 +3,8 @@ import {AppContext} from "../../../0app/providers/StoreProvider/Provider";
 import {useParams} from "react-router-dom";
 import cls from "./MangaDescriptionContent.module.scss"
 import BackgroundImg from "./backgroundImg/BackgroundImg";
-import {useSaveScroll} from "../../../5shered/customHook/useSaveScroll/useSaveScroll";
 import CoverManga from "./CoverManga/CoverManga";
 import Statistics from "./Statistics/Statistics";
-import axios from "axios";
 
 type TUseParams = {
     itemId: string
@@ -18,7 +16,6 @@ const MangaDescriptionContent = () => {
     const {oneManga, getOneManga, resetOneManga} = useContext(AppContext)
     const { itemId, mode, scroll } = useParams<TUseParams>()
 
-    // useSaveScroll()
 
     useEffect(() => {
         const numberValueScroll = Number(scroll)
