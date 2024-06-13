@@ -1,7 +1,7 @@
 export type TManga = {
     manga4?:boolean;
     id?:number;
-    _id?:string | number;
+    _id?:string
     photo?: string;
     name?: string;
     otherNames?: string[];

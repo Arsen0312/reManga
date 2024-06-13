@@ -1,8 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { FaUser } from "react-icons/fa6";
 import cls from "./Header.module.scss"
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {AppContext} from "../../../0app/providers/StoreProvider/Provider";
+import {classNames} from "../../../5shered/styleFunction/classNameFn";
 
 type THeadersProps = {
     setReg?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,9 +12,36 @@ type THeadersProps = {
 const Header = (props: THeadersProps) => {
     const { setReg } = props
     const { user } = useContext(AppContext)
+    const location = useLocation();
+    const [transparentMode, setTransparentMode] = useState<boolean>(false)
+
+        useEffect(() => {
+
+            const toggleBackgroundColor = () => {
+                if (window.scrollY >= 30) {
+                    setTransparentMode(false)
+                } else {
+                    setTransparentMode(true)
+                }
+            }
+
+            if (location.pathname.split('/')[1] === "manga") {
+                document.addEventListener("scroll", toggleBackgroundColor)
+            } else {
+                document.removeEventListener("scroll", toggleBackgroundColor)
+                setTransparentMode(false)
+                console.log('none')
+            }
+
+        }, [location.pathname]);
+
+    console.log(location.pathname)
+
+
+
 
     return (
-        <header className={cls.header}>
+        <header className={classNames(cls.header, {[cls.transparent]: transparentMode}, [])}>
             <nav className={cls.nav}>
                 <div className={cls.One}>
                     <Link to={'/'}>
@@ -23,10 +51,10 @@ const Header = (props: THeadersProps) => {
                             alt={""}
                         />
                     </Link>
-                    <Link to={'/manga/Catalog'} className={cls.catalog}>
+                    <Link to={'/Catalog'} className={cls.catalog}>
                         <div>Каталог</div>
                     </Link>
-                    <Link to={'/manga/mangaTops'} className={cls.tops}>
+                    <Link to={'/mangaTops'} className={cls.tops}>
                         <div>Топы</div>
                     </Link>
                     <Link to={''} className={cls.select}>

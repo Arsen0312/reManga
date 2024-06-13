@@ -55,9 +55,11 @@ const Catalog = () => {
             case "2":
                 setNameSelector("По последним обновлениям");
                 const sortedManga2 = [...manga].sort((a, b) => {
+                    // @ts-ignore
                     const lastChapterA = a.chaptersLists?.[a.chaptersLists.length - 1];
                     const lastChapterB = b.chaptersLists?.[b.chaptersLists.length - 1];
                     if (lastChapterA && lastChapterA.data && lastChapterB && lastChapterB.data) {
+                        // @ts-ignore
                         const dateA = new Date(lastChapterA.data);
                         const dateB = new Date(lastChapterB.data);
                         return dateB.getTime() - dateA.getTime();

@@ -11,7 +11,7 @@ import {AuthService} from "./service";
 export type TContextProps = {
     dispatch?: Dispatch<{type: string, payload?:any}>;
     getData?: () => Promise<void>;
-    getOneManga?: (id : string | number) => Promise<void>;
+    getOneManga?: (id : string) => Promise<void>;
     resetOneManga?: () => Promise<void>;
     addComment?: (newComment: { author:string,comment:string,like:number,disLike:number },id: string | number, clearForm :() => void,oneManga: TManga) => Promise<void>
     login?: (email: string, password: string, toggleReg: () => void) => Promise<AxiosResponse<AuthResponse>> | any
@@ -55,7 +55,7 @@ const Provider = ({ children }: React.PropsWithChildren) => {
         }
     }, []);
 
-    const getOneManga = (async (id: number | string) => {
+    const getOneManga = (async (id: string) => {
         try {
             dispatch({ type: "getRequestOneManga" });
             const { data } = await axios.get(`${API_URL}/manga/${id}/`);

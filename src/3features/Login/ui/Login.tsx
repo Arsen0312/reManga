@@ -1,37 +1,28 @@
-import React, {useState, useContext, useCallback} from 'react';
-import { useNavigate} from "react-router-dom";
+import React, { useContext } from 'react';
+import {SubmitHandler, useForm} from "react-hook-form"
 
 import cls from "./Login.module.scss";
 import {AppContext} from "../../../0app/providers/StoreProvider/Provider";
-import axios, {AxiosResponse} from "axios";
-import {AuthResponse} from "../../../0app/providers/StoreProvider/models/responce/AuthResponse";
-import {API_URL} from "../../../5shered/api";
 
 type TLoginProps = {
     setHandleModeAuth: React.Dispatch<React.SetStateAction<boolean>>;
     setReg: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Login = (props: TLoginProps) => {
+interface ILogin {
+    email: string
+    password: string
+}
+
+const Login = React.memo((props: TLoginProps) => {
     const { setHandleModeAuth, setReg } = props
     const { login } = useContext(AppContext)
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const { register, handleSubmit, formState: {errors} } = useForm<ILogin>({defaultValues:{email:"", password:""}});
 
-    const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-
-    const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-    const onSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement> | any) => {
-        console.log('onSubmit')
-        e.preventDefault();
-            login?.(email, password, toggleReg)
-
-    }, [email, password]);
+    const onSubmit:SubmitHandler<ILogin> = data => {
+        console.log(data, errors)
+        login?.(data.email, data.password, toggleReg)
+    }
 
     const toggleReg = () => {
         setReg(prev => !prev)
@@ -42,30 +33,28 @@ const Login = (props: TLoginProps) => {
     }
 
     return (
-            <form className={cls.form} onSubmit={onSubmit}>
+            <form className={cls.form} onSubmit={handleSubmit(onSubmit)}>
                 <h5 className={cls.title}>Войти в аккаунт</h5>
                 <div className={cls.boxInp}>
                     <input
-                        onChange={onChangeEmail}
-                        value={email}
+                        className={errors?.email?.message == "required" && cls.noneValue || ""}
+                        {...register("email", { required: 'required' , minLength:{value:12, message:"minLength"}})}
                         type="email"
-                        minLength={5}
-                        placeholder="*Логин/почта"
+                        placeholder={errors?.email?.message == "required" && "Поле Логин/почта обязательное" || "*Логин/почта"}
                         id={"username"}
                     />
                     <input
-                        onChange={onChangePassword}
-                        value={password}
+                        className={errors?.password?.message == "required" && cls.noneValue || ""}
+                        {...register("password", { required: "required" ,minLength:{value:12, message:"minLength"}})}
                         type="password"
-                        minLength={5}
-                        placeholder="*Пароль"
+                        placeholder={errors?.password?.message == "required" && "Поле *Пароль обязательное" || "*Пароль"}
                     />
                 </div>
                 <div className={cls.forGotPassword}>
                     {/*<span>Забыли пароль??</span>*/}
                 </div>
                 <div className={cls.boxInp}>
-                    <button className={cls.button} onClick={onSubmit}>Войти</button>
+                    <button className={cls.button} onClick={handleSubmit(onSubmit)}>Войти</button>
                 </div>
                 <div className={cls.boxZaRegistr}>
                     <span>Нет учетной записи??</span>
@@ -75,6 +64,6 @@ const Login = (props: TLoginProps) => {
                 </div>
             </form>
     );
-}
+})
 
 export default Login;

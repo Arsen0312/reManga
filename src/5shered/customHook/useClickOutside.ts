@@ -1,4 +1,4 @@
-import React ,{ useEffect } from 'react';
+import { useEffect } from 'react';
 
 const useClickOutside = (ref: any, callback: () => void) => {
     const handleClick = (e: any) => {
@@ -15,4 +15,3 @@ const useClickOutside = (ref: any, callback: () => void) => {
 };
 
 export default useClickOutside
-

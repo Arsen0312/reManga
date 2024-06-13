@@ -31,10 +31,18 @@ function App() {
             {reg && <Auth setReg={setReg}></Auth>}
         </div>
     );
+    if (location.pathname.split('/')[1] === "manga")
+        return (
+        <div className="App">
+            <Header/>
+            <AppRouter />
+            {reg && <Auth setReg={setReg}></Auth>}
+        </div>
+    );
 
     return (
         <div className="App">
-            <Header setReg={setReg} />
+            <Header setReg={setReg}/>
             <AppRouter />
             {reg && <Auth setReg={setReg}></Auth>}
             <Footer />

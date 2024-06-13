@@ -5,14 +5,12 @@ import {Create} from "../../../../1pages/Create";
 import NotFound from "../../../../1pages/NotFound/NotFound";
 import {Catalog} from "../../../../1pages/Catalog";
 import {PushCurd} from "../../../../1pages/Push/PushCard";
-import Login from "../../../../3features/Login/ui/Login";
-import {Header} from "../../../../2widgets/Header";
 import {UserRoom} from "../../../../1pages/UserRoom";
 
 enum AppRoutes {
     MAIN = "main",
     NOT_FOUND = "not_found",
-    CARDMANGA = "cardmanga",
+    MANGADESCRIPTIONCONTENT = "cardmanga",
     MANGACONTENT = "mangaContent",
     MANGATOPS = "mangaTops",
     CREATE = "create",
@@ -25,14 +23,13 @@ export type AppRouteProps = RouteProps & {}
 
 export const RoutePaths: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: "/",
-    [AppRoutes.CARDMANGA]: "/manga/:itemId",
+    [AppRoutes.MANGADESCRIPTIONCONTENT]: "/manga/:itemId/:mode/:scroll",
     [AppRoutes.MANGACONTENT]: "/mangaContent/:mangaId/:chapter/:number",
-    [AppRoutes.MANGATOPS]: "/manga/mangaTops",
+    [AppRoutes.MANGATOPS]: "/mangaTops",
     [AppRoutes.CREATE]: "/manga/create",
-    [AppRoutes.CATALOG]: "/manga/catalog",
-    [AppRoutes.PUSH]: "/manga/push",
+    [AppRoutes.CATALOG]: "/catalog",
+    [AppRoutes.PUSH]: "/manga/pu sh",
     [AppRoutes.USERROOM]: "/manga/userRoom",
-
 
 
     //last
@@ -49,7 +46,7 @@ export const routerConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePaths.not_found,
         element: <NotFound/>
     },
-    [AppRoutes.CARDMANGA]: { // Динамический путь с параметром маршрута
+    [AppRoutes.MANGADESCRIPTIONCONTENT]: { // Динамический путь с параметром маршрута
         path: RoutePaths.cardmanga,
         element: <MangaDescriptionContent/>
     },
@@ -57,26 +54,24 @@ export const routerConfig: Record<AppRoutes, AppRouteProps> = {
         path: RoutePaths.mangaContent,
         element: <MangaContent/>
     },
-    [AppRoutes.MANGATOPS]: { // Динамический путь с параметром маршрута
+    [AppRoutes.MANGATOPS]: {
         path: RoutePaths.mangaTops,
         element: <MangaTops/>
     },
-    [AppRoutes.CREATE]: { // Динамический путь с параметром маршрута
+    [AppRoutes.CREATE]: {
         path: RoutePaths.create,
         element: <Create/>
     },
-    [AppRoutes.CATALOG]: { // Динамический путь с параметром маршрута
+    [AppRoutes.CATALOG]: {
         path: RoutePaths.catalog,
         element: <Catalog/>
     },
-    [AppRoutes.PUSH]: { // Динамический путь с параметром маршрута
+    [AppRoutes.PUSH]: {
         path: RoutePaths.push,
         element: <PushCurd/>
     },
-    [AppRoutes.USERROOM]: { // Динамический путь с параметром маршрута
+    [AppRoutes.USERROOM]: {
         path: RoutePaths.userRoom,
         element: <UserRoom/>
     }
 };
-
-

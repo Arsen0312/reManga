@@ -26,9 +26,6 @@
   height: 450px;
   border-radius: 8px;
 }
-.mangaContainer .boxImg .backgroundImage {
-  display: none;
-}
 @media (max-width: 600px) {
   .mangaContainer .boxImg .backgroundImage {
     display: block;
@@ -37,6 +34,18 @@
     width: 100%;
     height: 110%;
     z-index: -4;
+  }
+}
+@media (min-width: 600px) {
+  .mangaContainer .boxImg .backgroundImage {
+    display: none;
+    position: absolute;
+    top: -10%;
+    left: -45%;
+    width: 100vw;
+    height: 100%;
+    z-index: -6;
+    object-fit: cover;
   }
 }
 .mangaContainer .boxImg .photo {
@@ -54,6 +63,18 @@
     border-radius: 15px;
   }
 }
+@media (min-width: 600px) {
+  .mangaContainer .boxImg::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -45%;
+    width: 100vw;
+    height: 110%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -5;
+  }
+}
 .mangaContainer .boxImg::before {
   content: "";
   position: absolute;
@@ -63,6 +84,18 @@
   height: 110%;
   backdrop-filter: blur(5px); /* Размытие заднего фона */
   z-index: -3;
+}
+@media (min-width: 600px) {
+  .mangaContainer .boxImg::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -45%;
+    width: 100vw;
+    height: 110%;
+    backdrop-filter: blur(8px); /* Размытие заднего фона */
+    z-index: -4;
+  }
 }
 @media (max-width: 600px) {
   .mangaContainer .boxImg::after {
@@ -75,6 +108,19 @@
     width: 100%;
     height: 110%;
     z-index: -2;
+  }
+}
+@media (min-width: 600px) {
+  .mangaContainer .boxImg::after {
+    content: "";
+    display: block;
+    background: linear-gradient(180deg, transparent, #121212);
+    position: absolute;
+    top: -10%;
+    left: -45.5%;
+    width: 100.2vw;
+    height: 110%;
+    z-index: -3;
   }
 }
 

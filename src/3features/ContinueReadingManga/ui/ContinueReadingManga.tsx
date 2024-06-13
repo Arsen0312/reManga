@@ -1,22 +1,23 @@
 import React from 'react';
-import {classNames} from "../../../5shered/styleFunction/classNameFn";
 import cls from "./ContinueReadingManga.module.scss"
 import {Link} from "react-router-dom";
 import Button from "../../../5shered/ui/button";
 import {PiBookmarkSimpleLight} from "react-icons/pi";
 import {RiArrowDropDownLine} from "react-icons/ri";
+import {classNames} from "../../../5shered/styleFunction/classNameFn";
 
 type TProps = {
     chaptersLists?: {translator:string,img:string[],like:number,data:string}[] | []
     lastChapter?: number | string
     itemId: string
+    toggleSwitch: boolean
 }
 
 const ContinueReadingManga = (props: TProps) => {
-    const { chaptersLists, lastChapter, itemId } = props
+    const { chaptersLists, lastChapter, itemId, toggleSwitch  } = props
 
     return (
-        <div className={cls.boxForButton}>
+        <div className={classNames(cls.boxForButton, {[cls.appearances]:toggleSwitch})}>
             {chaptersLists && chaptersLists.length ? (
                 <Link
                     to={`/mangaContent/${itemId}/${lastChapter}`}

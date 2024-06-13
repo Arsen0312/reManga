@@ -59,10 +59,10 @@ const HeaderMangaContent = (props: THeadersProps) => {
                             alt={""}
                         />
                     </Link>
-                    <Link to={'/manga/Catalog'} className={cls.catalog}>
+                    <Link to={'/Catalog'} className={cls.catalog}>
                         <div>Каталог</div>
                     </Link>
-                    <Link to={'/manga/mangaTops'} className={cls.tops}>
+                    <Link to={'/mangaTops'} className={cls.tops}>
                         <div>Топы</div>
                     </Link>
                     <Link to={''} className={cls.select}>

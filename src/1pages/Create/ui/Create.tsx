@@ -16,6 +16,7 @@ const Create = () => {
         const file = event.target.files?.[0];
         if (file) {
             setSelectedImage(file);
+            console.log(selectedImage)
         }
     };
 

@@ -3,6 +3,7 @@ import cls from "./MangaCard.module.scss"
 import { classNames } from "../../../5shered/styleFunction/classNameFn";
 import {Link} from "react-router-dom";
 import {TManga} from "../../../5shered/types/MangaTypes";
+import {linkToMangaDescription} from "../../../5shered/consts/linkToMangaDescription";
 
 interface IPropsMangaCard {
     width?: string;
@@ -23,7 +24,7 @@ const MangaCard = (props: IPropsMangaCard ) => {
 
     return (
         <div className={classNames(cls.element, {}, [element])} style={{width:width, height:height}} onClick={onClick}>
-            <Link to={`/manga/${manga?._id}`}>
+            <Link to={linkToMangaDescription(manga?._id+"")}>
                 <div className={classNames(cls.curd)}>
                     <div className={classNames(cls.wrapperForImg, {}, [wrapperForImg])} style={{width:width, height:"75%"}}>
                         <img

@@ -1,7 +1,7 @@
-@charset "UTF-8";
 .header {
   width: 100vw;
   height: 56px;
+  transition: background-color 500ms;
   background-color: #171717;
   display: flex;
   justify-content: center;
@@ -59,14 +59,14 @@
   border-radius: 50%;
   background-color: transparent;
   border: none;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   font-size: 20px;
-  box-shadow: 0 0 7px transparent; /* Начальное значение тени */
-  transition: box-shadow 0.5s ease; /* Добавляем переход для свойства box-shadow */
+  box-shadow: 0 0 7px transparent;
+  transition: box-shadow 0.5s ease;
 }
 .header .nav .tree .userLogo:hover {
-  box-shadow: 0 0 7px #3f5495; /* Изменяем тень на нулевую при наведении указателя мыши */
+  box-shadow: 0 0 7px #3f5495;
 }
 @media (max-width: 800px) {
   .header .nav .tree .bookmarks {
@@ -77,6 +77,11 @@
   .header .nav .tree .push {
     display: none;
   }
+}
+
+.transparent {
+  transition: background-color 500ms;
+  background-color: transparent;
 }
 
 .isCollapsed {

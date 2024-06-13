@@ -40,7 +40,7 @@ const Main = () => {
     return (
         <div style={{marginTop: "56px"}}>
             <div className={cls.nuvBar}>
-                <Link to={'/manga/Catalog'} className={cls.catalog}>
+                <Link to={'/Catalog'} className={cls.catalog}>
                     КАТАЛОГ
                 </Link>
                 <Link to={'/manga/mangaTops'} className={cls.tops}>

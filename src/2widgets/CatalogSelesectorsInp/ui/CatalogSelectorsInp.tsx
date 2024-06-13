@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import cls from "../../../1pages/Catalog/ui/Catalog.module.scss";
 import {TManga} from "../../../5shered/types/MangaTypes";
 import {useClickOutside} from "../../../5shered";
+import { Input } from '../../../5shered/ui/input';
 
 interface i {
     mangas: TManga[];
@@ -66,7 +67,6 @@ const CatalogSelectorsInp = (props:i) => {
                 return false
             }
         })
-        setFilteredMangas(filteredResult);
         onSortFn(filteredResult)
     }
 
@@ -99,23 +99,23 @@ const CatalogSelectorsInp = (props:i) => {
                     </button>
                 </div>
                 <div className={cls.firstInputs}>
-                    <input className={cls.input} placeholder={"Типы"} id={"types"} onChange={handleInputChange}/>
+                    <Input value={textInput.types} className={cls.input} placeholder={"Типы"} id={"types"} onChange={handleInputChange}/>
                 </div>
                 <div className={cls.firstInputs}>
-                    <input className={cls.input} placeholder={"Жанры"} id={"genres"} onChange={handleInputChange as any}/>
+                    <Input value={textInput.genres} className={cls.input} placeholder={"Жанры"} id={"genres"} onChange={handleInputChange}/>
                 </div>
 
                 <div className={cls.boxInp}>
                     <div className={cls.secondInputs}>
-                    <input className={cls.input} placeholder={"Cтатус проекта"} id={"projectStatus"} onChange={handleInputChange as any}/>
+                    <Input value={textInput.projectStatus} className={cls.input} placeholder={"Cтатус проекта"} id={"projectStatus"} onChange={handleInputChange}/>
                     </div>
                 </div>
                 <div className={cls.boxInp}>
                     <h5>Год выпуска</h5>
                     <div className={cls.thirdInputs}>
                         <div className={cls.wrapperInpMini}>
-                            <input className={cls.inputMini} placeholder={"От"} type={"number"} id={"releaseYearFrom"} onChange={handleInputChange as any}/>
-                            <input className={cls.inputMini} placeholder={"До"} type={"number"} id={"releaseYearTo"} onChange={handleInputChange as any}/>
+                            <Input value={textInput.releaseYearFrom} className={cls.inputMini} placeholder={"От"} type={"number"} id={"releaseYearFrom"} onChange={handleInputChange}/>
+                            <Input value={textInput.releaseYearTo} className={cls.inputMini} placeholder={"До"} type={"number"} id={"releaseYearTo"} onChange={handleInputChange}/>
                         </div>
                     </div>
                 </div>
@@ -123,8 +123,8 @@ const CatalogSelectorsInp = (props:i) => {
                     <h5>Оценка</h5>
                     <div className={cls.forthInputs}>
                         <div className={cls.wrapperInpMini}>
-                            <input className={cls.inputMini} placeholder={"От"} type={"number"} id={"ratingFrom"} onChange={handleInputChange as any}/>
-                            <input className={cls.inputMini} placeholder={"До"} type={"number"} id={"ratingTo"} onChange={handleInputChange as any}/>
+                            <Input value={textInput.ratingFrom} className={cls.inputMini} placeholder={"От"} type={"number"} id={"ratingFrom"} onChange={handleInputChange}/>
+                            <Input value={textInput.ratingTo} className={cls.inputMini} placeholder={"До"} type={"number"} id={"ratingTo"} onChange={handleInputChange}/>
                         </div>
                     </div>
                 </div>

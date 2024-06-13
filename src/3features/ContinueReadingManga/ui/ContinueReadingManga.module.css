@@ -4,13 +4,15 @@
 }
 @media (max-width: 600px) {
   .boxForButton {
+    transition: bottom 500ms, opacity 400ms;
+    opacity: 0;
     background-color: transparent;
     height: 0;
     justify-content: center;
     flex-direction: row;
     align-items: center;
     position: sticky;
-    bottom: 60px;
+    bottom: -60px;
     left: 10%;
     gap: 40px;
     z-index: 10;
@@ -21,7 +23,16 @@
     display: none;
   }
 }
-.boxForButton .buttonA {
+
+@media (max-width: 600px) {
+  .appearances {
+    transition: bottom 500ms, opacity 800ms;
+    bottom: 60px;
+    opacity: 1;
+  }
+}
+
+.buttonA {
   background-color: #1976d2;
   border-radius: 8px;
   text-decoration: none;
@@ -33,12 +44,13 @@
   margin: 15px 0 15px;
 }
 @media (max-width: 600px) {
-  .boxForButton .buttonA {
+  .buttonA {
     border-radius: 24px;
     height: 50px;
   }
 }
-.boxForButton .buttonZakladkaDesktop {
+
+.buttonZakladkaDesktop {
   display: block;
   width: 250px;
   height: 40px;
@@ -48,11 +60,12 @@
   color: white;
 }
 @media (max-width: 600px) {
-  .boxForButton .buttonZakladkaDesktop {
+  .buttonZakladkaDesktop {
     display: none;
   }
 }
-.boxForButton .buttonZakladkaMobile {
+
+.buttonZakladkaMobile {
   display: none;
   width: 60px;
   height: 50px;
@@ -62,11 +75,12 @@
   color: white;
 }
 @media (max-width: 600px) {
-  .boxForButton .buttonZakladkaMobile {
+  .buttonZakladkaMobile {
     display: block;
   }
 }
-.boxForButton .buttonNoneChapter {
+
+.buttonNoneChapter {
   width: 250px;
   height: 40px;
   border-radius: 8px;
@@ -79,7 +93,7 @@
   font-size: 16px;
 }
 @media (max-width: 600px) {
-  .boxForButton .buttonNoneChapter {
+  .buttonNoneChapter {
     border-radius: 24px;
     height: 50px;
   }
