@@ -7,6 +7,7 @@ import {TManga} from "../../../5shered/types/MangaTypes";
 import {API_URL} from "../../../5shered/api";
 import {AuthResponse} from "./models/responce/AuthResponse";
 import {AuthService} from "./service";
+import $api from "./http";
 
 export type TContextProps = {
     dispatch?: Dispatch<{type: string, payload?:any}>;
@@ -47,7 +48,7 @@ const Provider = ({ children }: React.PropsWithChildren) => {
     const getData = useCallback(async () => {
         try {
             dispatch({ type: "getRequest" });
-            const { data } = await axios.get(`${API_URL}/manga`);
+            const { data } = await $api.get(`/manga`);
             console.log(data)
             dispatch({ type: "getSuccess", payload: data});
         } catch (error) {
@@ -58,7 +59,7 @@ const Provider = ({ children }: React.PropsWithChildren) => {
     const getOneManga = (async (id: string) => {
         try {
             dispatch({ type: "getRequestOneManga" });
-            const { data } = await axios.get(`${API_URL}/manga/${id}/`);
+            const { data } = await $api.get(`/manga/${id}/`);
             dispatch({ type: "getSuccessOneManga", payload: data});
         } catch (error) {
             dispatch({ type: "getFailureOneManga", payload: error });
@@ -77,7 +78,7 @@ const Provider = ({ children }: React.PropsWithChildren) => {
     const addComment = useCallback(async (newComment: { author:string,comment:string,like:number,disLike:number }, id: number | string, clearForm: () => void, oneManga:TManga) => {
         try {
             dispatch({ type: "addCommentRequest" });
-            const { data: mangaItem } = await axios.get(`${API_URL}/manga/${id}`);
+            const { data: mangaItem } = await $api.get(`/manga/${id}`);
             mangaItem.comments.push(newComment);
             console.log(mangaItem, "addComment");
             await axios.put(`${API_URL}/manga/${id}`, mangaItem);
@@ -126,11 +127,12 @@ const Provider = ({ children }: React.PropsWithChildren) => {
     const checkAuth = useCallback(async () => {
         try {
             dispatch({ type: "loginUserRequest" })
-            const response = await axios.get(`${API_URL}/auth/refresh`, {withCredentials: true})
+            const response = await $api.get(`/auth/refresh`, {withCredentials: true})
             localStorage.setItem("token", response.data.accessToken)
             dispatch({ type: "loginUserSuccess" , payload: response.data.user })
         } catch (error) {
             dispatch({ type: "loginUserFailure" , payload: {error}})
+            console.log(error, "error")
         }
     }, []);
 

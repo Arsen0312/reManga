@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useParams } from "react-router-dom";
 import cls from "./MangaContent.module.scss"
 import axios from "axios";
@@ -52,7 +52,6 @@ const MangaContent = () => {
         }
     }, []);
 
-    console.log(chaptersLists)
 
     return (
         <div className={cls.main}>

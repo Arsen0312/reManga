@@ -3,7 +3,7 @@ import {API_URL} from "../../../../5shered/api";
 
 const $api = axios.create({
     withCredentials: true,
-    baseURL: API_URL
+    baseURL: "https://server-re-manga.vercel.app"
 })
 
 $api.interceptors.request.use((config) => {

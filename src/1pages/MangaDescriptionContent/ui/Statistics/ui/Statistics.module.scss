@@ -1,0 +1,61 @@
+.main {
+  @media (min-width: 601px) {
+    width: 100%;
+    
+  }
+  @media (max-width: 600px) {
+    width: 100vw;
+    margin-top: 16px;
+    padding: 16px;
+
+  }
+
+  .mangaType {
+    font-size: 16px;
+    color: hsla(0, 0%, 100%, .64);
+  }
+
+  .mangaData {
+    font-size: 15px;
+  }
+
+  .statisticsDate {
+    display: flex;
+    justify-content: space-between;
+
+    .date {
+      max-width: calc(100% / 7);
+    }
+
+  }
+
+  .rating {
+
+    .wrapperGrades {
+      display: flex;
+      align-items: center;
+
+      .ratingValue {
+        font-size: 20px;
+        margin-left: 6px;
+      }
+
+    }
+
+    .button {
+      border: none;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 2.5px 15px 5px 15px;
+      color: white;
+      transition: background-color 500ms;
+
+      &:hover {
+        transition: background-color 500ms;
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+    }
+
+  }
+
+}

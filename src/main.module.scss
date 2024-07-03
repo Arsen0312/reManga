@@ -1,7 +1,9 @@
 $maxWidth: 1280;
 
-* {
-  //box-sizing: border-box;
+$text-gray: grey;
+
+*{
+  box-sizing: border-box;
 }
 
 $--secondary-text: hsla(0, 0%, 100%, .64);

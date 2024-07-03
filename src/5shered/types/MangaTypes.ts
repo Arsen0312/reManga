@@ -1,7 +1,7 @@
 export type TManga = {
-    manga4?:boolean;
-    id?:number;
-    _id?:string
+    manga4?: boolean;
+    id?: number;
+    _id?: string
     photo?: string;
     name?: string;
     otherNames?: string[];
@@ -14,7 +14,7 @@ export type TManga = {
     views?: number;
     tabs?: number;
     chapters?: number;
-    tags?:[];
+    tags?: [];
     category?: "Манга" | "Маньхуа" | "Манхва" | "Западный комикс" | "Рукомикс" | "Индонезийский комикс";
     description?: string;
     numberOfChapters?: number;
@@ -22,6 +22,6 @@ export type TManga = {
     translator?: string[];
     author?: string;
     genres?: string[];
-    comments?: { author:string,comment:string,like:number,disLike:number }[],
-    chaptersLists?: [{translator:string,img:string[],like:number,data:string}] | [];
+    comments?: { author: string, comment: string, like: number, disLike: number }[],
+    chaptersLists?: [{ translator: string, img: string[], like: number, data: string }] | [];
 };

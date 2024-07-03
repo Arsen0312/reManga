@@ -1,0 +1,48 @@
+@media (min-width: 601px) {
+  .main {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .main {
+    width: 100vw;
+    margin-top: 16px;
+    padding: 16px;
+  }
+}
+.main .mangaType {
+  font-size: 16px;
+  color: hsla(0, 0%, 100%, 0.64);
+}
+.main .mangaData {
+  font-size: 15px;
+}
+.main .statisticsDate {
+  display: flex;
+  justify-content: space-between;
+}
+.main .statisticsDate .date {
+  max-width: 14.2857142857%;
+}
+.main .rating .wrapperGrades {
+  display: flex;
+  align-items: center;
+}
+.main .rating .wrapperGrades .ratingValue {
+  font-size: 20px;
+  margin-left: 6px;
+}
+.main .rating .button {
+  border: none;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2.5px 15px 5px 15px;
+  color: white;
+  transition: background-color 500ms;
+}
+.main .rating .button:hover {
+  transition: background-color 500ms;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/*# sourceMappingURL=Statistics.module.css.map */

@@ -1,47 +1,22 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { FaUser } from "react-icons/fa6";
+import {FaUser} from "react-icons/fa6";
 import cls from "./Header.module.scss"
 import {Link, useLocation} from "react-router-dom";
 import {AppContext} from "../../../0app/providers/StoreProvider/Provider";
 import {classNames} from "../../../5shered/styleFunction/classNameFn";
 
 type THeadersProps = {
-    setReg?: React.Dispatch<React.SetStateAction<boolean>>;
+    setReg: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Header = (props: THeadersProps) => {
-    const { setReg } = props
-    const { user } = useContext(AppContext)
-    const location = useLocation();
-    const [transparentMode, setTransparentMode] = useState<boolean>(false)
-
-        useEffect(() => {
-
-            const toggleBackgroundColor = () => {
-                if (window.scrollY >= 30) {
-                    setTransparentMode(false)
-                } else {
-                    setTransparentMode(true)
-                }
-            }
-
-            if (location.pathname.split('/')[1] === "manga") {
-                document.addEventListener("scroll", toggleBackgroundColor)
-            } else {
-                document.removeEventListener("scroll", toggleBackgroundColor)
-                setTransparentMode(false)
-                console.log('none')
-            }
-
-        }, [location.pathname]);
-
-    console.log(location.pathname)
-
-
+    const {setReg} = props
+    const {user} = useContext(AppContext)
+    console.log(user)
 
 
     return (
-        <header className={classNames(cls.header, {[cls.transparent]: transparentMode}, [])}>
+        <header className={cls.header}>
             <nav className={cls.nav}>
                 <div className={cls.One}>
                     <Link to={'/'}>
@@ -72,14 +47,15 @@ const Header = (props: THeadersProps) => {
 
                     {
                         user
-                            ?   <button className={cls.userLogo}>
-                                        <FaUser color={"white"}/>
-                                </button>
-                            : <button onClick={() =>
-                                      setReg?.(prev => !prev)}
-                                      className={cls.login}>
-                            Войти
-                              </button>
+                            ? <button className={cls.userLogo}>
+                                <FaUser color={"white"}/>
+                            </button>
+                            : <button
+                                onClick={() =>
+                                    setReg(prev => !prev)}
+                                className={cls.login}>
+                                Войти
+                            </button>
                     }
 
                 </div>
